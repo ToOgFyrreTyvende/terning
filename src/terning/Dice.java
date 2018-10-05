@@ -11,7 +11,7 @@ public class Dice {
 	
 	// roll the die n times and print the values
 	public void rollMultiple(int n) {
-		for (int i=0; i<n; i++) {
+		for (int i=0; i<n; i++) { //Fixed dice rolling 1 less than user input (1->0)
 			System.out.print(roll() + " ");
 		}		
 	}
