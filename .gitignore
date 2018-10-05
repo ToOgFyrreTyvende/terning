@@ -1,0 +1,7 @@
+
+.idea/
+out/
+*.jar
+*.log
+hs_err_pid*
+
