@@ -18,9 +18,14 @@ class DiceTest {
 
     @Test
     void roll1() {
+
+        // Initialization of the different resulting rolls
         int et = 0, to = 0, tre = 0, fire = 0, fem = 0, seks = 0;
 
-        for (int i = 0; i < 60000; i++) {
+        // We roll 60000 times and split the results into their respective groups
+        int rolls = 60000;
+
+        for (int i = 0; i <= rolls; i++) {
             int roll = dice.roll();
 
             if(roll == 1){
@@ -42,22 +47,21 @@ class DiceTest {
                 seks = seks + 1;
             }
 
-            if(i == 59999){
+            // On the last run, we print out the resulting roll spread
+            if(i == rolls){
                 System.out.println("1 " + et + "\n" + "2 " + to + "\n" + "3 " + tre + "\n" +
-                                   "4 " + fire + "\n" + "5 " + fem + "\n" + "6 " + et + "\n");
+                        "4 " + fire + "\n" + "5 " + fem + "\n" + "6 " + et + "\n");
             }
 
         }
 
+        // when all roll groups have been created, we test if each and every one is within 400 of
+        // 60000/6, since that would be the probabilistic average
         assertTrue(et >= 10000 - 400 && et <= 10000 + 400);
         assertTrue(to >= 10000 - 400 && et <= 10000 + 400);
         assertTrue(tre >= 10000 - 400 && et <= 10000 + 400);
         assertTrue(fire >= 10000 - 400 && et <= 10000 + 400);
         assertTrue(fem >= 10000 - 400 && et <= 10000 + 400);
         assertTrue(seks >= 10000 - 400 && et <= 10000 + 400);
-
-
-
-
     }
 }
