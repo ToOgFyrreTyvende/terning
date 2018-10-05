@@ -24,8 +24,26 @@ public class UseDice {
 		Scanner keyboard=new Scanner(System.in);   // Make an instance of keyboard Scanner
 		System.out.println("Welcome to the diceroll program");
 		System.out.println("How many times do you want to roll the dice?");
-		int n = keyboard.nextInt();  // Read integer
+		int n = correctInput(keyboard);  // Read input, which should only be an int
 		cup.rollMultiple(n);         // Roll the dice n times
 		keyboard.close();            // Close the scanner
+	}
+	private static int correctInput(Scanner keyboard) {
+		boolean caught = false;
+		int input = 0;
+
+		// Udarbejdet med inspiration Opgave 2, lavet af Ahmad og fra fra https://stackoverflow.com/a/32593462/3742885
+		do {
+			if (keyboard.hasNextInt()) {
+				input = keyboard.nextInt();
+				caught = true;
+			} else {
+				keyboard.nextLine();
+				// Vi bruger \r, eller carriage return, for at overskrive
+				// samme linje hvis funktionskaldet bliver kaldt flere gange uden brugerinput
+				System.out.print("\rPlease input a correct input: ");
+			}
+		} while (!caught);
+		return input;
 	}
 }
